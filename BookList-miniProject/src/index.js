@@ -1,37 +1,29 @@
 import React from "react";
 import ReactDom from "react-dom";
+import "./index.css";
+
+const title = "A Promised Land";
+const author = "Barack Obama";
 
 function BookList() {
-  return (
-    <section>
-      <Book />
-      <Book />
-      <Book />
-      <Book />
-      <Book />
-    </section>
-  );
+	return (
+		<section className="booklist">
+			<Book />
+		</section>
+	);
 }
 
 const Book = () => {
-  return (
-    <article>
-      <Image />
-      <Title />
-      <Author />
-    </article>
-  );
+	return (
+		<article className="book">
+			<img
+				src="https://images-na.ssl-images-amazon.com/images/I/91uwocAMtSL._AC_UL200_SR200,200_.jpg"
+				alt="book image"
+			/>
+			<h1>{title}</h1>
+			<h4>{author}</h4>
+		</article>
+	);
 };
-
-const Image = () => (
-  <img
-    src="https://images-na.ssl-images-amazon.com/images/I/91uwocAMtSL._AC_UL200_SR200,200_.jpg"
-    alt="book image"
-  />
-);
-
-const Title = () => <h1>A Promised Land</h1>;
-
-const Author = () => <h4>Barack Obama</h4>;
 
 ReactDom.render(<BookList />, document.getElementById("root"));
