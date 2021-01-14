@@ -2,24 +2,47 @@ import React from "react";
 import ReactDom from "react-dom";
 import "./index.css";
 
-const title = "A Promised Land";
-const author = "Barack Obama";
+const books = [
+	{
+		id: 1,
+		img:
+			"https://images-na.ssl-images-amazon.com/images/I/91uwocAMtSL._AC_UL200_SR200,200_.jpg",
+		title: "A Promised Land",
+		author: "Barack Obama",
+	},
+
+	{
+		id: 2,
+		img:
+			"https://images-na.ssl-images-amazon.com/images/I/71kxa1-0mfL._AC_UL200_SR200,200_.jpg",
+		title: "1984",
+		author: "George Orwell",
+	},
+	{
+		id: 3,
+		img:
+			"https://images-na.ssl-images-amazon.com/images/I/71wdbkiRokL._AC_UL200_SR200,200_.jpg",
+		title: "Animal Farm",
+		author: "George Orwell",
+	},
+];
 
 function BookList() {
 	return (
 		<section className="booklist">
-			<Book />
+			{books.map((book) => {
+				return <Book key={book.id} {...book}></Book>;
+			})}
 		</section>
 	);
 }
 
-const Book = () => {
+const Book = (props) => {
+	const { img, title, author } = props;
+	console.log(props);
 	return (
 		<article className="book">
-			<img
-				src="https://images-na.ssl-images-amazon.com/images/I/91uwocAMtSL._AC_UL200_SR200,200_.jpg"
-				alt="book image"
-			/>
+			<img src={img} alt={title + " cover"} />
 			<h1>{title}</h1>
 			<h4>{author}</h4>
 		</article>
